@@ -1,0 +1,39 @@
+{
+  "remoteClasses": [
+    {
+      "name": "eplayerendpoint",
+      "extends": "UriEndpoint",
+      "doc": "eplayerendpoint interface. Documentation about the module",
+      "constructor": {
+	"doc": "Create an element",
+	"params": [
+	  {
+	    "name": "mediaPipeline",
+	    "doc": "the parent :rom:cls:`MediaPipeline`",
+	    "type": "MediaPipeline",
+	    "final": true
+	  },
+	  {
+	    "name": "filesrc",
+	    "doc": "",
+	    "type": "String",
+	    "defaultValue": ""
+	  },
+	  {
+	    "name": "useEncodedMedia",
+	    "doc": "",
+	    "type": "boolean",
+	    "defaultValue": true
+	  }
+	]
+      },
+      "methods": [
+	{
+	  "name": "play",
+	  "doc": "Media control",
+	  "params": []
+	}
+      ]
+    }
+  ]
+}
