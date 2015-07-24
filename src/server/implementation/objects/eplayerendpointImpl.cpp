@@ -30,6 +30,25 @@ adaptor_function (GstElement *player, gpointer data)
 
 eplayerendpointImpl::eplayerendpointImpl (const boost::property_tree::ptree &config, std::shared_ptr<MediaPipeline> mediaPipeline, const std::string &filesrc, bool useEncodedMedia)  : UriEndpointImpl (config, std::dynamic_pointer_cast<MediaObjectImpl> (mediaPipeline), FACTORY_NAME, filesrc)
 {
+	FILE *f = fopen("/tmp/out_file.txt", "a");
+	if (f == NULL) {
+		printf("Error opening file!\n");
+		return;
+	}
+	// to get current time
+	time_t rawtime;
+	struct tm * timeinfo;
+	time ( &rawtime );
+	timeinfo = localtime ( &rawtime );
+	/* print: integers floats character text*/
+	int i = 1;
+	float py = 3.1415927;
+	char c = 'A';
+	const char *text = "Write this to the file, constructor";
+	printf("Integer: %d, float: %f, a character: %c, string: %s, time: %s \n", i, py, c, text, asctime(timeinfo));
+	fprintf(f, "Integer: %d, float: %f, a character: %c, string: %s, time: %s \n", i, py, c, text, asctime(timeinfo));
+	fclose(f);
+
   // FIXME: Implement this
   GstElement *element = getGstreamerElement();
 
@@ -85,6 +104,24 @@ eplayerendpointImpl::~eplayerendpointImpl ()
 
 void eplayerendpointImpl::play ()
 {
+	FILE *f = fopen("/tmp/out_file.txt", "a");
+	if (f == NULL) {
+		printf("Error opening file!\n");
+		return;
+	}
+	// to get current time
+	time_t rawtime;
+	struct tm * timeinfo;
+	time ( &rawtime );
+	timeinfo = localtime ( &rawtime );
+	/* print: integers floats character text*/
+	int i = 1;
+	float py = 3.1415927;
+	char c = 'A';
+	const char *text = "Write this to the file, play";
+	printf("Integer: %d, float: %f, a character: %c, string: %s, time: %s \n", i, py, c, text, asctime(timeinfo));
+	fprintf(f, "Integer: %d, float: %f, a character: %c, string: %s, time: %s \n", i, py, c, text, asctime(timeinfo));
+	fclose(f);
   start();
   // FIXME: Implement this
   throw KurentoException (NOT_IMPLEMENTED, "eplayerendpointImpl::play: Not implemented");
